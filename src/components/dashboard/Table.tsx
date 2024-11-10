@@ -19,6 +19,16 @@ function Table({ entities, handleSave }: EntityTableProps) {
   const toggleSortDirection = (): void => {
     setSortDirection(sortDirection === "asc" ? "desc" : "asc");
   };
+
+  const isPhoneOrIndustry = (entity: Entity): string => {
+    if (entity.phone) {
+      return `Téléphone: ${entity.phone}`;
+    } else if (entity.industry) {
+      return `Industrie: ${entity.industry}`;
+    } else {
+      return "Non rempli";
+    }
+  };
   return (
     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
       <thead className="text-xs text-white bg-regal-blue">
@@ -47,11 +57,7 @@ function Table({ entities, handleSave }: EntityTableProps) {
           >
             <td className="py-4 px-6">{entity.name}</td>
             <td className="py-4 px-6">{entity.email || entity.contactEmail}</td>
-            <td className="py-4 px-6">
-              {entity.phone
-                ? `Téléphone: ${entity.phone}`
-                : `Département: ${entity.industry}`}
-            </td>
+            <td className="py-4 px-6">{isPhoneOrIndustry(entity)}</td>
             <td className="py-4 px-6">
               <EditContactorCompanyForm
                 entity={entity}

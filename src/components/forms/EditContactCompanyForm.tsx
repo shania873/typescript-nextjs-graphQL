@@ -1,40 +1,43 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
+import { useForm } from "react-hook-form";
 import { Button, Field, Input, Label } from "@headlessui/react";
 import { EntityProps } from "@/types/interfaces";
 import { UPDATE_ENTITY } from "../../graphql/mutations";
 import ModalLayout from "../layout/Modal";
 
 function EditContactCompanyForm({ entity, onSave }: EntityProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    entityType: "email" in entity ? "Contact" : "Company",
-    id: entity.id,
-    name: entity.name,
-    email: "email" in entity ? entity.email : "",
-    phone: "phone" in entity ? entity.phone : "",
-    industry: "industry" in entity ? entity.industry : "",
-    contactEmail: "contactEmail" in entity ? entity.contactEmail : "",
-  });
-
-  const [updateEntity, { loading, error }] = useMutation(UPDATE_ENTITY, {
-    onCompleted: () => {
-      onSave();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      entityType: "email" in entity ? "Contact" : "Company",
+      id: entity.id,
+      name: entity.name,
+      email: "email" in entity ? entity.email : "",
+      phone: "phone" in entity ? entity.phone : "",
+      industry: "industry" in entity ? entity.industry : "",
+      contactEmail: "contactEmail" in entity ? entity.contactEmail : "",
     },
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const [isOpen, setIsOpen] = useState(false);
+  const [updateEntity, { loading, error }] = useMutation(UPDATE_ENTITY, {
+    onCompleted: () => {
+      onSave();
+      setIsOpen(false);
+    },
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    updateEntity({ variables: { input: formData } });
-    setIsOpen(false);
+  const onSubmit = (formData: any) => {
+    const input = {
+      ...formData,
+      id: entity.id,
+      entityType: "email" in entity ? "Contact" : "Company",
+    };
+    updateEntity({ variables: { input } });
   };
 
   return (
@@ -43,81 +46,79 @@ function EditContactCompanyForm({ entity, onSave }: EntityProps) {
       setIsOpen={setIsOpen}
       error={error}
       title={`${
-        formData.entityType === "Company"
-          ? "Éditer une Entreprise"
-          : "Éditer un Contact"
-      } `}
+        "email" in entity ? "Éditer un Contact" : "Éditer une Entreprise"
+      }`}
       isEdit={true}
     >
-      <form onSubmit={handleSubmit} className="mt-4 space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="mt-4 space-y-4">
         <Field>
-          <Label htmlFor="name" className={"text-gray-900"}>
+          <Label htmlFor="name" className="text-gray-900">
             Nom
           </Label>
           <Input
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Name"
-            required
+            {...register("name", { required: "Ce champ est requis" })}
+            placeholder="Nom"
             className="w-full rounded border border-gray-300 p-2 text-gray-900"
           />
+          {errors.name && (
+            <p className="text-red-500 text-xs italic">{errors.name.message}</p>
+          )}
         </Field>
 
-        {formData.entityType === "Contact" && (
+        {"email" in entity && (
           <>
             <Field>
-              <Label htmlFor="email" className={"text-gray-900"}>
+              <Label htmlFor="email" className="text-gray-900">
                 E-mail
               </Label>
               <Input
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Email"
+                {...register("email", { required: "Ce champ est requis" })}
+                placeholder="E-mail"
                 className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-regal-blue-50"
               />
+              {errors.email && (
+                <p className="text-red-500 text-xs italic">
+                  {errors.email.message}
+                </p>
+              )}
             </Field>
-
             <Field>
-              <Label htmlFor="name" className={"text-gray-900"}>
+              <Label htmlFor="phone" className="text-gray-900">
                 Téléphone
               </Label>
               <Input
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="Phone"
+                {...register("phone")}
+                placeholder="Téléphone"
                 className="w-full rounded border border-gray-300 p-2 text-gray-900"
               />
             </Field>
           </>
         )}
 
-        {formData.entityType === "Company" && (
+        {"industry" in entity && (
           <>
             <Field>
-              <Label htmlFor="name" className={"text-gray-900"}>
+              <Label htmlFor="industry" className="text-gray-900">
                 Industrie
               </Label>
               <Input
-                name="industry"
-                value={formData.industry}
-                onChange={handleChange}
-                placeholder="Industry"
+                {...register("industry", { required: "Ce champ est requis" })}
+                placeholder="Industrie"
                 className="w-full rounded border border-gray-300 p-2 text-gray-900"
               />
+              {errors.industry && (
+                <p className="text-red-500 text-xs italic">
+                  {errors.industry.message}
+                </p>
+              )}
             </Field>
-
             <Field>
-              <Label htmlFor="name" className={"text-gray-900"}>
+              <Label htmlFor="contactEmail" className="text-gray-900">
                 E-mail de contact
               </Label>
               <Input
-                name="contactEmail"
-                value={formData.contactEmail}
-                onChange={handleChange}
-                placeholder="Contact Email"
+                {...register("contactEmail")}
+                placeholder="E-mail de contact"
                 className="w-full rounded border border-gray-300 p-2 text-gray-900"
               />
             </Field>
@@ -132,13 +133,13 @@ function EditContactCompanyForm({ entity, onSave }: EntityProps) {
           >
             Annuler
           </Button>
-          <button
+          <Button
             type="submit"
             disabled={loading}
-            className="px-4 py-2 text-sm bg-regal-blue  text-white rounded hover:bg-regal-blue-50"
+            className="px-4 py-2 text-sm bg-regal-blue text-white rounded hover:bg-regal-blue-50"
           >
             {loading ? "Sauver..." : "Sauvegarder"}
-          </button>
+          </Button>
         </div>
       </form>
     </ModalLayout>
