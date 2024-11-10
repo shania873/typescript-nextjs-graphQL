@@ -13,7 +13,6 @@ function AddContactForm({ refetchEntities }: AddContactFormProps) {
 
   const onSubmit: SubmitHandler<IFormInputContact> = async (data) => {
     const input = { ...data, entityType: "Contact" };
-    console.log("Input data being sent:", input);
     await createEntity({ variables: { input } });
     reset();
     setIsOpen(false);
@@ -31,19 +30,19 @@ function AddContactForm({ refetchEntities }: AddContactFormProps) {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-4">
         <Input
           {...register("name")}
-          className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
+          className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-regal-blue-50"
           placeholder="Nom"
           required
         />
         <Input
           {...register("email")}
-          className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
+          className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-regal-blue-50"
           placeholder="E-mail"
           required
         />
         <Input
           {...register("phone")}
-          className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
+          className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-regal-blue-50"
           placeholder="Téléphone"
         />
         <div className="flex justify-end gap-2">
@@ -56,7 +55,7 @@ function AddContactForm({ refetchEntities }: AddContactFormProps) {
           </Button>
           <Button
             type="submit"
-            className="rounded bg-regal-blue  px-4 py-2 text-sm text-white hover:bg-sky-500"
+            className="rounded bg-regal-blue  px-4 py-2 text-sm text-white hover:bg-regal-blue-50"
           >
             {loading ? "Ajout..." : "Ajout d'un contact"}
           </Button>

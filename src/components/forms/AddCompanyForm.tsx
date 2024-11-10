@@ -31,19 +31,19 @@ function AddCompanyForm({ refetchEntities }: AddCompanyFormProps) {
         <Input
           {...register("name")}
           placeholder="Nom"
-          className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
+          className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-regal-blue-50"
           required
         />
         <Input
           {...register("industry")}
           placeholder="Industrie"
-          className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
+          className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-regal-blue-50"
           required
         />
         <Input
           {...register("contactEmail")}
           placeholder="E-mail de contact"
-          className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
+          className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-regal-blue-50"
         />
         <Button
           type="submit"
@@ -51,7 +51,7 @@ function AddCompanyForm({ refetchEntities }: AddCompanyFormProps) {
             mt-4 ${
               loading
                 ? "bg-gray-300"
-                : "bg-regal-blue text-white hover:bg-sky-500"
+                : "bg-regal-blue text-white hover:bg-regal-blue-50"
             }`}
         >
           {loading ? "Ajout..." : "Ajouter compagnie"}

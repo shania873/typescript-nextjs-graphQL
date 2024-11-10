@@ -9,8 +9,7 @@ import SearchFilter from "../dashboard/SearchFilter";
 import Table from "../dashboard/Table";
 
 function DashboardList() {
-  const { loading, error, data, refetch } =
-    useQuery<GetEntitiesData>(GET_ENTITIES);
+  const { data, refetch } = useQuery<GetEntitiesData>(GET_ENTITIES);
   const [filterType, setFilterType] = useState<string>("all");
   const [searchTerm, setSearchTerm] = useState<string>("");
 

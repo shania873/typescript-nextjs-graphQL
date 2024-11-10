@@ -75,7 +75,7 @@ function EditContactCompanyForm({ entity, onSave }: EntityProps) {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Email"
-                className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
+                className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-regal-blue-50"
               />
             </Field>
 
@@ -127,7 +127,7 @@ function EditContactCompanyForm({ entity, onSave }: EntityProps) {
         <div className="flex justify-end space-x-2 mt-4">
           <Button
             type="button"
-            className="rounded bg-gray-200 px-4 py-2 text-sm text-gray-700 hover:bg-gray-300"
+            className="rounded bg-gray-200 px-4 py-2 text-sm text-gray-700 hover:bg-regal-blue-50"
             onClick={() => setIsOpen(false)}
           >
             Annuler
