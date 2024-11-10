@@ -6,7 +6,7 @@ import { Input, Button } from "@headlessui/react";
 import ModalLayout from "../layout/Modal";
 import { IFormInputCompany, AddCompanyFormProps } from "../../types/interfaces";
 
-const AddCompanyForm: React.FC<AddCompanyFormProps> = ({ refetchEntities }) => {
+function AddCompanyForm({ refetchEntities }: AddCompanyFormProps) {
   const { register, handleSubmit, reset } = useForm<IFormInputCompany>();
   const [createEntity, { loading, error }] = useMutation(CREATE_ENTITY);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -54,11 +54,11 @@ const AddCompanyForm: React.FC<AddCompanyFormProps> = ({ refetchEntities }) => {
                 : "bg-regal-blue text-white hover:bg-sky-500"
             }`}
         >
-          {loading ? "Adding..." : "Ajouter compagnie"}
+          {loading ? "Ajout..." : "Ajouter compagnie"}
         </Button>
       </form>
     </ModalLayout>
   );
-};
+}
 
 export default AddCompanyForm;

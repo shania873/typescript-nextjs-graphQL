@@ -2,7 +2,7 @@ import React from "react";
 import EditContactorCompanyForm from "../forms/EditContactCompanyForm";
 import { EntityTableProps } from "../../types/interfaces";
 
-const Table: React.FC<EntityTableProps> = ({ entities, handleSave }) => {
+function Table({ entities, handleSave }: EntityTableProps) {
   return (
     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
       <thead className="text-xs text-white bg-regal-blue">
@@ -38,6 +38,6 @@ const Table: React.FC<EntityTableProps> = ({ entities, handleSave }) => {
       </tbody>
     </table>
   );
-};
+}
 
 export default Table;

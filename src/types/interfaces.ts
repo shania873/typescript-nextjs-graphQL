@@ -1,3 +1,6 @@
+import { ReactNode } from "react";
+import { Contact, Company } from "../pages/api/types";
+
 export interface Entity {
   __typename: "Contact" | "Company";
   id: string;
@@ -42,4 +45,19 @@ export interface IFormInputContact {
 
 export interface AddContactFormProps {
   refetchEntities: () => void;
+}
+
+export interface EntityProps {
+  entity: Contact | Company;
+  onSave: () => void;
+  isOpen: boolean;
+}
+
+export interface ModalLayoutProps {
+  children: ReactNode;
+  isOpen: boolean;
+  setIsOpen: (open: boolean) => void;
+  error?: Error;
+  title: String;
+  isEdit: Boolean;
 }

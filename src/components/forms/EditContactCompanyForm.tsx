@@ -1,25 +1,10 @@
-import React, { useState, Fragment } from "react";
-import { gql, useMutation } from "@apollo/client";
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-  DialogTitle,
-  Transition,
-  Button,
-  Field,
-  Input,
-  Label,
-} from "@headlessui/react";
-import { Contact, Company } from "../../pages/api/types";
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { Button, Field, Input, Label } from "@headlessui/react";
+import { EntityProps } from "@/types/interfaces";
 import { UPDATE_ENTITY } from "../../graphql/mutations";
-import { FaUserEdit, FaPen } from "react-icons/fa";
 import ModalLayout from "../layout/Modal";
-interface EntityProps {
-  entity: Contact | Company;
-  onSave: () => void;
-  isOpen: boolean;
-}
+
 function EditContactCompanyForm({ entity, onSave }: EntityProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -59,8 +44,8 @@ function EditContactCompanyForm({ entity, onSave }: EntityProps) {
       error={error}
       title={`${
         formData.entityType === "Company"
-          ? "Editer une Compagnie"
-          : "Editer un Contact"
+          ? "Éditer une Entreprise"
+          : "Éditer un Contact"
       } `}
       isEdit={true}
     >
@@ -152,7 +137,7 @@ function EditContactCompanyForm({ entity, onSave }: EntityProps) {
             disabled={loading}
             className="px-4 py-2 text-sm bg-regal-blue  text-white rounded hover:bg-regal-blue-50"
           >
-            {loading ? "Saving..." : "Sauvegarder"}
+            {loading ? "Sauver..." : "Sauvegarder"}
           </button>
         </div>
       </form>

@@ -1,12 +1,12 @@
 import React from "react";
 import { SearchFilterProps } from "../../types/interfaces";
 
-const SearchFilter: React.FC<SearchFilterProps> = ({
+function SearchFilter({
   searchTerm,
   handleSearchChange,
   filterType,
   handleFilterChange,
-}) => {
+}: SearchFilterProps) {
   return (
     <div className="flex justify-between w-full">
       <input
@@ -38,6 +38,6 @@ const SearchFilter: React.FC<SearchFilterProps> = ({
       </div>
     </div>
   );
-};
+}
 
 export default SearchFilter;

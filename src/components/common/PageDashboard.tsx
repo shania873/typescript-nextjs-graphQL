@@ -8,14 +8,11 @@ import { FaTable } from "react-icons/fa";
 import SearchFilter from "../dashboard/SearchFilter";
 import Table from "../dashboard/Table";
 
-const DashboardList: React.FC = () => {
+function DashboardList() {
   const { loading, error, data, refetch } =
     useQuery<GetEntitiesData>(GET_ENTITIES);
   const [filterType, setFilterType] = useState<string>("all");
   const [searchTerm, setSearchTerm] = useState<string>("");
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
 
   const filteredEntities =
     data?.getEntities.filter((entity) => {
@@ -47,6 +44,6 @@ const DashboardList: React.FC = () => {
       </div>
     </div>
   );
-};
+}
 
 export default DashboardList;

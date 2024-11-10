@@ -1,16 +1,8 @@
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-  DialogTitle,
-  Transition,
-} from "@headlessui/react";
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { CREATE_ENTITY } from "../../graphql/mutations";
 import { Button, Input } from "@headlessui/react";
-import { FaUser } from "react-icons/fa";
 import { IFormInputContact, AddContactFormProps } from "../../types/interfaces";
 import ModalLayout from "../layout/Modal";
 
@@ -66,7 +58,7 @@ function AddContactForm({ refetchEntities }: AddContactFormProps) {
             type="submit"
             className="rounded bg-regal-blue  px-4 py-2 text-sm text-white hover:bg-sky-500"
           >
-            {loading ? "Adding..." : "Ajout d'un contact"}
+            {loading ? "Ajout..." : "Ajout d'un contact"}
           </Button>
         </div>
       </form>

@@ -1,4 +1,5 @@
-import React, { ReactNode, useState } from "react";
+import React from "react";
+import { ModalLayoutProps } from "@/types/interfaces";
 import {
   Dialog,
   DialogBackdrop,
@@ -9,19 +10,8 @@ import {
 import { FaBuilding, FaPen } from "react-icons/fa";
 import { Button } from "@headlessui/react";
 
-interface ModalLayoutProps {
-  children: ReactNode;
-
-  isOpen: boolean;
-  setIsOpen: (open: boolean) => void;
-  error?: Error;
-  title: String;
-  isEdit: Boolean;
-}
-
 const ModalLayout: React.FC<ModalLayoutProps> = ({
   children,
-
   isOpen,
   setIsOpen,
   error,
@@ -33,7 +23,7 @@ const ModalLayout: React.FC<ModalLayoutProps> = ({
       <Button
         className={`rounded ${
           isEdit
-            ? " bg-white hover:bg-regal-blue-50"
+            ? " bg-white hover:bg-slate-100 active:bg-slate-400"
             : " bg-regal-blue hover:bg-regal-blue-50"
         }  py-2 px-4 text-sm text-white  active:bg-regal-blue-50 ml-2 mr-2`}
         onClick={() => setIsOpen(true)}
