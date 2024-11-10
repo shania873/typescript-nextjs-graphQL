@@ -11,7 +11,7 @@ function SearchFilter({
     <div className="flex justify-between w-full">
       <input
         type="text"
-        placeholder="Rechercher..."
+        placeholder="Rechercher ..."
         value={searchTerm}
         onChange={handleSearchChange}
         className="p-2 border rounded"
@@ -23,7 +23,7 @@ function SearchFilter({
               type="radio"
               name="entityFilter"
               value={type}
-              checked={filterType === type}
+              defaultChecked={filterType === type}
               className="form-radio"
             />
             <span className="ml-2">
