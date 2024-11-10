@@ -34,19 +34,20 @@ export const UPDATE_ENTITY = gql`
   }
 `;
 
-export const DELETE_ENTITY = gql`
-  mutation DeleteEntity($id: ID!) {
-    deleteEntity(id: $id) {
-      id
-      name
-      ... on Company {
-        industry
-        contactEmail
-      }
-      ... on Contact {
-        email
-        phone
-      }
-    }
-  }
-`;
+// TODO : made a delete item
+// export const DELETE_ENTITY = gql`
+//   mutation DeleteEntity($id: ID!) {
+//     deleteEntity(id: $id) {
+//       id
+//       name
+//       ... on Company {
+//         industry
+//         contactEmail
+//       }
+//       ... on Contact {
+//         email
+//         phone
+//       }
+//     }
+//   }
+// `;

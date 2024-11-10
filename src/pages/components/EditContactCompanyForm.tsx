@@ -24,7 +24,7 @@ interface EntityProps {
 const EditContactCompanyForm: React.FC<EntityProps> = ({ entity, onSave }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
-    entityType: "email" in entity ? "Contact" : "Compagnie",
+    entityType: "email" in entity ? "Contact" : "Company",
     id: entity.id,
     name: entity.name,
     email: "email" in entity ? entity.email : "",
@@ -101,7 +101,8 @@ const EditContactCompanyForm: React.FC<EntityProps> = ({ entity, onSave }) => {
                     className="mr-2 hover:opacity-50"
                     color="#00000"
                   />
-                  Editer {formData.entityType}
+                  Editer{" "}
+                  {formData.entityType === "Company" ? "Compagnie" : "Contact"}
                 </DialogTitle>
 
                 <form onSubmit={handleSubmit} className="mt-4 space-y-4">
@@ -149,7 +150,7 @@ const EditContactCompanyForm: React.FC<EntityProps> = ({ entity, onSave }) => {
                     </>
                   )}
 
-                  {formData.entityType === "Compagnie" && (
+                  {formData.entityType === "Company" && (
                     <>
                       <Field>
                         <Label htmlFor="name" className={"text-gray-900"}>

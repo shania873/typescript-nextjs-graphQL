@@ -20,7 +20,7 @@ interface GetEntitiesData {
   getEntities: Entity[];
 }
 
-function EntityList() {
+function DashboardList() {
   const { loading, error, data, refetch } =
     useQuery<GetEntitiesData>(GET_ENTITIES);
 
@@ -91,4 +91,4 @@ function EntityList() {
   );
 }
 
-export default EntityList;
+export default DashboardList;

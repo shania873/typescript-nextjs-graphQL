@@ -1,9 +1,9 @@
-import EntityList from "./components/EntityList";
+import DashboardList from "./components/DashboardList";
 
 export default function Home() {
   return (
     <div>
-      <EntityList />
+      <DashboardList />
     </div>
   );
 }
