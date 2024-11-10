@@ -138,7 +138,7 @@ function EditContactCompanyForm({ entity, onSave }: EntityProps) {
             disabled={loading}
             className="px-4 py-2 text-sm bg-regal-blue text-white rounded hover:bg-regal-blue-50"
           >
-            {loading ? "Sauver..." : "Sauvegarder"}
+            {loading ? "Loading..." : "Sauvegarder"}
           </Button>
         </div>
       </form>

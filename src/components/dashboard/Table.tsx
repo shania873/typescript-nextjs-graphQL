@@ -53,7 +53,7 @@ function Table({ entities, handleSave }: EntityTableProps) {
         {sortEntities([...entities]).map((entity) => (
           <tr
             key={entity.id}
-            className="bg-white border-b text-gray-900 dark:border-gray-200"
+            className="bg-white border-b text-gray-900 dark:border-gray-200 hover:bg-gray-100"
           >
             <td className="py-4 px-6">{entity.name}</td>
             <td className="py-4 px-6">{entity.email || entity.contactEmail}</td>
