@@ -4,7 +4,8 @@ import { Button } from "@headlessui/react";
 import AddContactForm from "./AddContactForm";
 import EditContactorCompanyForm from "./EditContactCompanyForm";
 import AddCompanyForm from "./AddCompanyForm";
-
+import { FaTable } from "react-icons/fa";
+import { FaTableList } from "react-icons/fa6";
 interface Entity {
   __typename: "Contact" | "Company";
   id: string;
@@ -32,12 +33,18 @@ function EntityList() {
   return (
     <div>
       <div className="overflow-x-auto relative">
+        <h1 className="text-3xl flex p-5 items-center">
+          <FaTableList color="black" className="mr-2" /> Tableau de bord
+        </h1>
         <div className="pt-5 pb-5 flex justify-end pr-5">
           <AddContactForm refetchEntities={refetch} />
           <AddCompanyForm refetchEntities={refetch} />
         </div>
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <thead
+            className="text-xs text-white  bg-regal-blue  
+          "
+          >
             <tr>
               <th scope="col" className="py-3 px-6">
                 Nom
@@ -57,7 +64,7 @@ function EntityList() {
             {data?.getEntities.map((entity) => (
               <tr
                 key={entity.id}
-                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                className="bg-white border-b text-gray-900 dark:border-gray-200"
               >
                 <td className="py-4 px-6">{entity.name}</td>
                 <td className="py-4 px-6">

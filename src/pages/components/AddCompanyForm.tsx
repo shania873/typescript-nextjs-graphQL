@@ -10,7 +10,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { CREATE_ENTITY } from "../graphql/mutations";
 import { Button, Input } from "@headlessui/react";
-
+import { FaBuilding } from "react-icons/fa";
 interface IFormInput {
   name: string;
   industry: string;
@@ -40,7 +40,7 @@ function AddCompanyForm({ refetchEntities }: AddCompanyFormProps) {
   return (
     <>
       <Button
-        className="rounded bg-sky-600 py-2 px-4 text-sm text-white hover:bg-sky-500 active:bg-sky-700 ml-2 mr-2"
+        className="rounded bg-regal-blue py-2 px-4 text-sm text-white hover:bg-regal-blue-50 active:bg-regal-blue-50 ml-2 mr-2"
         onClick={() => setIsOpen(true)}
       >
         Ajout d'un compagnie
@@ -77,8 +77,8 @@ function AddCompanyForm({ refetchEntities }: AddCompanyFormProps) {
               leaveTo="scale-95"
             >
               <DialogPanel className="max-w-lg w-full rounded-lg bg-white p-6 shadow-lg">
-                <DialogTitle className="text-xl font-semibold text-gray-700">
-                  Ajout d'un compagnie
+                <DialogTitle className="text-xl font-semibold text-gray-700 flex items-center">
+                  <FaBuilding color="black" className="mr-2" /> Compagnie
                 </DialogTitle>
 
                 <form
@@ -87,20 +87,20 @@ function AddCompanyForm({ refetchEntities }: AddCompanyFormProps) {
                 >
                   <Input
                     {...register("name")}
-                    className="text-black w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
-                    placeholder="Name"
+                    className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
+                    placeholder="Nom"
                     required
                   />
                   <Input
                     {...register("industry")}
-                    className="text-black w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
-                    placeholder="Industry"
+                    className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
+                    placeholder="Industrie"
                     required
                   />
                   <Input
                     {...register("contactEmail")}
-                    className="text-black w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
-                    placeholder="Contact Email"
+                    className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
+                    placeholder="E-mail de contact"
                   />
                   <div className="flex justify-end gap-2">
                     <Button
@@ -112,9 +112,9 @@ function AddCompanyForm({ refetchEntities }: AddCompanyFormProps) {
                     </Button>
                     <Button
                       type="submit"
-                      className="rounded bg-sky-600 px-4 py-2 text-sm text-white hover:bg-sky-500"
+                      className="rounded bg-regal-blue  px-4 py-2 text-sm text-white hover:bg-sky-500"
                     >
-                      {loading ? "Adding..." : "Add Company"}
+                      {loading ? "Adding..." : "Ajouter compagnie"}
                     </Button>
                   </div>
                 </form>

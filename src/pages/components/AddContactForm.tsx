@@ -10,6 +10,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { CREATE_ENTITY } from "../graphql/mutations";
 import { Button, Input } from "@headlessui/react";
+import { FaUser } from "react-icons/fa";
 
 interface IFormInput {
   name: string;
@@ -40,7 +41,7 @@ function AddContactForm({ refetchEntities }: AddContactFormProps) {
   return (
     <>
       <Button
-        className="rounded bg-sky-600 py-2 px-4 text-sm text-white hover:bg-sky-500 active:bg-sky-700"
+        className="rounded bg-regal-blue py-2 px-4 text-sm text-white hover:bg-regal-blue-50 active:bg-regal-blue-50"
         onClick={() => setIsOpen(true)}
       >
         Ajout d'un contact
@@ -77,8 +78,9 @@ function AddContactForm({ refetchEntities }: AddContactFormProps) {
               leaveTo="scale-95"
             >
               <DialogPanel className="max-w-lg w-full rounded-lg bg-white p-6 shadow-lg">
-                <DialogTitle className="text-xl font-semibold text-gray-700">
-                  Ajout d'un contact
+                <DialogTitle className="text-xl font-semibold text-gray-700 flex items-center">
+                  <FaUser color="black" className="mr-2" />
+                  Contact
                 </DialogTitle>
 
                 <form
@@ -87,19 +89,19 @@ function AddContactForm({ refetchEntities }: AddContactFormProps) {
                 >
                   <Input
                     {...register("name")}
-                    className="text-black w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
-                    placeholder="Name"
+                    className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
+                    placeholder="Nom"
                     required
                   />
                   <Input
                     {...register("email")}
-                    className="text-black w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
+                    className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
                     placeholder="E-mail"
                     required
                   />
                   <Input
                     {...register("phone")}
-                    className="text-black w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
+                    className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
                     placeholder="Téléphone"
                   />
                   <div className="flex justify-end gap-2">
@@ -112,9 +114,9 @@ function AddContactForm({ refetchEntities }: AddContactFormProps) {
                     </Button>
                     <Button
                       type="submit"
-                      className="rounded bg-sky-600 px-4 py-2 text-sm text-white hover:bg-sky-500"
+                      className="rounded bg-regal-blue  px-4 py-2 text-sm text-white hover:bg-sky-500"
                     >
-                      {loading ? "Adding..." : "Add Company"}
+                      {loading ? "Adding..." : "Ajout d'une compagnie"}
                     </Button>
                   </div>
                 </form>

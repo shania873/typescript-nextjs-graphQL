@@ -17,10 +17,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        "regal-blue": "#00A4C6",
+        "regal-blue": "#003fda",
         "regal-blue-gradient":
           "linear-gradient(180deg, rgba(0,105,176,1) 0%, rgba(23,154,244,1) 100%)",
-        "regal-blue-50": "#039fe3",
+        "regal-blue-50": "#080f4d",
         "button-blue": "#0077c8",
         "custom-gradientcolor1": "rgba(0,105,176,1)",
         "custom-gradientcolor2": "rgba(23,154,244,1)",
