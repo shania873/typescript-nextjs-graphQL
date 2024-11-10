@@ -32,8 +32,8 @@ export const resolvers = {
           phone: phone || "",
           __typename: "Contact",
         };
-      }
-      if (entityType === "Company") {
+        console.log(newEntity);
+      } else if (entityType === "Company") {
         if (!industry) {
           throw new Error("Industry is required for Company entity");
         }
@@ -45,7 +45,7 @@ export const resolvers = {
           __typename: "Company",
         };
       } else {
-        throw new Error("Invalid entity type");
+        throw new Error("Invalid entity tyrezrzepe");
       }
 
       dataStore.push(newEntity);

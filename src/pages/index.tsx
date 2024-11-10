@@ -1,8 +1,8 @@
-import DashboardList from "./components/DashboardList";
+import DashboardList from "../components/common/PageDashboard";
 
 export default function Home() {
   return (
-    <div>
+    <div className="h-full">
       <DashboardList />
     </div>
   );
