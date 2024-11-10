@@ -13,15 +13,15 @@ import { Button, Input } from "@headlessui/react";
 
 interface IFormInput {
   name: string;
-  email: string;
-  phone: string;
+  industry: string;
+  contactEmail?: string;
 }
 
-interface AddContactFormProps {
+interface AddCompanyFormProps {
   refetchEntities: () => void;
 }
 
-function AddContactForm({ refetchEntities }: AddContactFormProps) {
+function AddCompanyForm({ refetchEntities }: AddCompanyFormProps) {
   const { register, handleSubmit, reset } = useForm<IFormInput>();
   const [createEntity, { loading, error }] = useMutation(CREATE_ENTITY);
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +29,7 @@ function AddContactForm({ refetchEntities }: AddContactFormProps) {
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     const input = {
       ...data,
-      entityType: "Contact",
+      entityType: "Company",
     };
     await createEntity({ variables: { input } });
     reset();
@@ -40,10 +40,10 @@ function AddContactForm({ refetchEntities }: AddContactFormProps) {
   return (
     <>
       <Button
-        className="rounded bg-sky-600 py-2 px-4 text-sm text-white hover:bg-sky-500 active:bg-sky-700"
+        className="rounded bg-sky-600 py-2 px-4 text-sm text-white hover:bg-sky-500 active:bg-sky-700 ml-2 mr-2"
         onClick={() => setIsOpen(true)}
       >
-        Ajout d'un contact
+        Ajout d'un compagnie
       </Button>
 
       <Transition appear show={isOpen} as={Fragment}>
@@ -78,7 +78,7 @@ function AddContactForm({ refetchEntities }: AddContactFormProps) {
             >
               <DialogPanel className="max-w-lg w-full rounded-lg bg-white p-6 shadow-lg">
                 <DialogTitle className="text-xl font-semibold text-gray-700">
-                  Ajout d'un contact
+                  Ajout d'un compagnie
                 </DialogTitle>
 
                 <form
@@ -92,15 +92,15 @@ function AddContactForm({ refetchEntities }: AddContactFormProps) {
                     required
                   />
                   <Input
-                    {...register("email")}
+                    {...register("industry")}
                     className="text-black w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
-                    placeholder="E-mail"
+                    placeholder="Industry"
                     required
                   />
                   <Input
-                    {...register("phone")}
+                    {...register("contactEmail")}
                     className="text-black w-full rounded-md border border-gray-300 p-2 focus:border-sky-500"
-                    placeholder="Téléphone"
+                    placeholder="Contact Email"
                   />
                   <div className="flex justify-end gap-2">
                     <Button
@@ -121,7 +121,7 @@ function AddContactForm({ refetchEntities }: AddContactFormProps) {
 
                 {error && (
                   <p className="mt-4 text-sm text-red-500">
-                    Erreurs: {error.message}
+                    Error: {error.message}
                   </p>
                 )}
               </DialogPanel>
@@ -133,4 +133,4 @@ function AddContactForm({ refetchEntities }: AddContactFormProps) {
   );
 }
 
-export default AddContactForm;
+export default AddCompanyForm;

@@ -39,7 +39,6 @@ let dataStore: AnyEntity[] = [
   },
 ];
 
-// GraphQL schema
 const typeDefs = gql`
   schema {
     query: Query
@@ -145,6 +144,7 @@ const resolvers = {
       dataStore.push(newEntity);
       return newEntity;
     },
+
     updateEntity: (
       parent: undefined,
       args: { input: UpdateEntityInput }
@@ -152,10 +152,10 @@ const resolvers = {
       const index = dataStore.findIndex(
         (entity) => entity.id === args.input.id
       );
+
       if (index === -1) return null;
 
       const existingEntity = dataStore[index];
-
       let updatedEntity: AnyEntity;
 
       if (existingEntity.__typename === "Contact") {
@@ -222,7 +222,6 @@ export default async function handler(
   })(req, res);
 }
 
-// Disable Next.js body parser for this API route
 export const config = {
   api: {
     bodyParser: false,
