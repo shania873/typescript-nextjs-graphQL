@@ -7,7 +7,6 @@ import {
   DialogTitle,
   Transition,
   Button,
-  Switch,
   Field,
   Input,
   Label,
@@ -123,7 +122,7 @@ const EditContactCompanyForm: React.FC<EntityProps> = ({ entity, onSave }) => {
                   {formData.entityType === "Contact" && (
                     <>
                       <Field>
-                        <Label htmlFor="name" className={"text-gray-900"}>
+                        <Label htmlFor="email" className={"text-gray-900"}>
                           E-mail
                         </Label>
                         <Input
