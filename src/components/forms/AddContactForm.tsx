@@ -80,7 +80,7 @@ function AddContactForm({ refetchEntities }: AddContactFormProps) {
             type="submit"
             className="rounded bg-regal-blue  px-4 py-2 text-sm text-white hover:bg-regal-blue-50"
           >
-            {loading ? "Ajout..." : "Ajout d'un contact"}
+            Ajout d'un contact
           </Button>
         </div>
       </form>

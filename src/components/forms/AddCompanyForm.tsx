@@ -45,17 +45,22 @@ function AddCompanyForm({ refetchEntities }: AddCompanyFormProps) {
           placeholder="E-mail de contact"
           className="text-gray-900 w-full rounded-md border border-gray-300 p-2 focus:border-regal-blue-50"
         />
-        <Button
-          type="submit"
-          className={`rounded px-4 py-2 text-sm
-            mt-4 ${
-              loading
-                ? "bg-gray-300"
-                : "bg-regal-blue text-white hover:bg-regal-blue-50"
-            }`}
-        >
-          {loading ? "Ajout..." : "Ajouter compagnie"}
-        </Button>
+
+        <div className="flex justify-end gap-2 mt-4">
+          <Button
+            type="button"
+            className="rounded bg-gray-200 px-4 py-2 text-sm text-gray-700 hover:bg-gray-300"
+            onClick={() => setIsOpen(false)}
+          >
+            Annuler
+          </Button>
+          <Button
+            type="submit"
+            className="rounded bg-regal-blue  px-4 py-2 text-sm text-white hover:bg-regal-blue-50"
+          >
+            Ajouter compagnie
+          </Button>
+        </div>
       </form>
     </ModalLayout>
   );
