@@ -1,5 +1,6 @@
 import React from "react";
 import { SearchFilterProps } from "../../types/interfaces";
+import { Input, Label } from "@headlessui/react";
 
 function SearchFilter({
   searchTerm,
@@ -9,7 +10,7 @@ function SearchFilter({
 }: SearchFilterProps) {
   return (
     <div className="flex justify-between w-full">
-      <input
+      <Input
         type="text"
         placeholder="Rechercher ..."
         value={searchTerm}
@@ -18,8 +19,8 @@ function SearchFilter({
       />
       <div onChange={handleFilterChange} className="flex items-center ml-4">
         {["all", "Company", "Contact"].map((type) => (
-          <label key={type} className="inline-flex items-center mr-2">
-            <input
+          <div key={type} className="inline-flex items-center mr-2">
+            <Input
               type="radio"
               name="entityFilter"
               value={type}
@@ -33,7 +34,7 @@ function SearchFilter({
                 ? "Compagnies"
                 : "Contacts"}
             </span>
-          </label>
+          </div>
         ))}
       </div>
     </div>
